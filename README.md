@@ -1,2 +1,12 @@
-# ntlm_sprayer
-Python-based NTLM password spraying tool.
+# NTLM Sprayer
+
+A professional Python utility for **Password Spraying** attacks against NTLM authentication. Designed for security auditing and Active Directory laboratory environments.
+
+## Features
+* **Summary Report**: Consolidates all valid credentials at the end of the attack.
+* **OOP Design**: Built using Object-Oriented Programming for modularity.
+* **CLI Focused**: Native terminal experience using `argparse`.
+
+## Usage
+```bash
+python ntlm_sprayer.py -w users.txt -p Password123 -u [http://target.local/login](http://target.local/login) -f domain.local

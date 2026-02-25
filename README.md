@@ -11,5 +11,5 @@ A professional Python utility for **Password Spraying** attacks against NTLM aut
 ```bash
 python ntlm_sprayer.py -w users.txt -p Password123 -u [http://target.local/login](http://target.local/login) -f domain.local
 
-![NTLM Sprayer Results](assets/ntlm.png)
+<img src="assets/ntlm.png" width="650" alt="Attack Results">
 

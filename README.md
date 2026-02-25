@@ -19,20 +19,39 @@ Python utility for **Password Spraying** attacks against NTLM authentication. De
 ## Usage
 ```bash
 python ntlm_sprayer.py -w users.txt -p Password123 -u [http://target.local/login](http://target.local/login) -f domain.local
+```
 
-## Core Logic
-1. The "Identity" Problem (FQDN)
-In a standard Active Directory (AD) environment, a standalone username like georgina.edwards is often insufficient for authentication. The system needs to know which authority is responsible for that specific user. This is where the Domain (FQDN) becomes critical.
+## 1. The Identity Problem (FQDN)
 
-Authentication protocols like NTLM strictly require the DOMAIN\username format. This tool automates this requirement, ensuring your requests are properly formatted for the Domain Controller to understand. Without this "Domain" context, "naked" usernames are typically rejected immediately by the server.
+In a standard Active Directory (AD) environment, a standalone username such as `georgina.edwards` is often insufficient for authentication. The system must determine which authority manages that account. This is where the Fully Qualified Domain Name (FQDN) becomes essential.
 
-2. Defeating Account Lockout Policies
-Traditional brute-forcing—testing hundreds of passwords against a single user—is a high-risk strategy in modern environments. Most Active Directory configurations include Account Lockout Thresholds that disable an account after 3 to 5 failed attempts. This not only stops your testing but also alerts the Blue Team (SOC) instantly.
+Authentication protocols such as NTLM require credentials in the following format:
 
-Password Spraying is the strategic solution to this problem. Instead of attacking one user with many passwords, we test one highly likely password (e.g., Summer2026!) against a large list of users.
+## 2. Defeating Account Lockout Policies
 
-Single Attempt: Each account receives only one failed login attempt per cycle.
+Traditional brute-force attacks — testing multiple passwords against a single user — are high-risk in modern Active Directory environments.
 
-Stealth: You remain safely below the lockout threshold, avoiding account freezes.
+Most AD configurations enforce **Account Lockout Policies**, which disable an account after a defined number of failed login attempts (commonly 3–5). This not only prevents further attempts but may also trigger security alerts for the Blue Team (SOC).
 
-Efficiency: You significantly increase the probability of finding that one user in the organization who used a weak, seasonal, or default password.
+### Password Spraying Strategy
+
+Password spraying is a strategic alternative designed to bypass this limitation.
+
+Instead of testing multiple passwords against one account, the technique tests a single commonly used password (e.g., `Summer2026!`) against a large list of users.
+
+### Advantages
+
+- **Single Attempt per Account**  
+  Each account receives only one authentication attempt per cycle, remaining below lockout thresholds.
+
+- **Stealth**  
+  Reduces the likelihood of triggering account lockouts or detection mechanisms.
+
+- **Efficiency**  
+  Increases the probability of identifying users who rely on weak, seasonal, or predictable passwords.
+
+---
+
+> ⚠️ This tool is intended for authorized security testing and educational purposes only.
+
+

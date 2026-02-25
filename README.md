@@ -20,6 +20,7 @@ Python utility for **Password Spraying** attacks against NTLM authentication. De
 ```bash
 python ntlm_sprayer.py -w users.txt -p Password123 -u [http://target.local/login](http://target.local/login) -f domain.local
 
+## Core Logic
 1. The "Identity" Problem (FQDN)
 In a standard Active Directory (AD) environment, a standalone username like georgina.edwards is often insufficient for authentication. The system needs to know which authority is responsible for that specific user. This is where the Domain (FQDN) becomes critical.
 

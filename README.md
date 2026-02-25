@@ -1,6 +1,6 @@
 # NTLM Sprayer
 
-A professional Python utility for **Password Spraying** attacks against NTLM authentication. Designed for security auditing and Active Directory laboratory environments.
+Python utility for **Password Spraying** attacks against NTLM authentication. Designed for security auditing and Active Directory laboratory environments.
 
 ## Demo Results
 <p align="center">
